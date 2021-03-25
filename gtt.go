@@ -1,14 +1,6 @@
 /***********************************************************************************************************************
 
-  gtt.go
-  License: MIT
-  Copyright (c) 2019 Roy Dybing
-
-  github    : rDybing
-  Linked In    : Roy Dybing
-  Twitter    : @DybingRoy
-
-  Full license text in README.md
+  This is a fork from https://github.com/rDybing/gotermtris
 
 ***********************************************************************************************************************/
 
@@ -120,7 +112,7 @@ func (screen screenT) gameLoop(brickPiece []brickT) int {
     state := initGameState()
     var brickState brickStateT
     brickState.newBrick(screen, &state)
-    ticker := time.NewTicker(time.Millisecond * 35).C
+    ticker := time.NewTicker(time.Millisecond * 50).C
     keyEvent := ui.PollEvents()
     var lines int
     var deleteLine bool

@@ -101,10 +101,10 @@ func main() {
 
 func (screen screenT) drawMenu(hs []hiScoreT) {
 	screen.clearField()
-	menuText := "     GoTermTris\n\n"
-	menuText += "       ʕ◔ϖ◔ʔ\n\n"
-	menuText += "  2019 © Roy Dybing\n"
-	menuText += "    License: MIT\n\n"
+	menuText := "     Go Blocks\n\n"
+	menuText += "       \n\n"
+	menuText += "  \n"
+	menuText += "    \n\n"
 	menuText += "    High Scores:\n\n"
 	menuText += displayScore(hs)
 	menuText += "\n    ------------- \n\n"
@@ -145,7 +145,7 @@ func (screen screenT) gameLoop(brickPiece []brickT) int {
 				if brickTest.doBrickFit(screen, brickPiece[brickState.index]) {
 					brickState.posY++
 				}
-			case "<Up>":
+			case "<Space>":
 				if brickTest.rotation < 3 {
 					brickTest.rotation++
 				} else {
@@ -341,13 +341,13 @@ func (screen *screenT) drawScreenBuffer() {
 			if (x >= screen.fieldXOffset && x < screen.field.x+screen.fieldXOffset) &&
 				(y >= screen.fieldYOffset && y < screen.field.y+screen.fieldYOffset) {
 				newPixel := string(getRune(screen.fieldBuffer[fieldIndex]))
-				if newPixel == " " {
+				if newPixel == string(getRune(0)) {
 					newPixel = string(getRune(screen.brickBuffer[fieldIndex]))
 				}
 				screen.buffer += newPixel
 				fieldIndex++
 			} else {
-				screen.buffer += " "
+				screen.buffer += string(getRune(0))
 			}
 		}
 		screen.buffer += "\n"
@@ -355,7 +355,7 @@ func (screen *screenT) drawScreenBuffer() {
 }
 
 func getRune(index byte) rune {
-	out := []rune{' ', '0', 'O', 'Ø', 'H', 'W', 'M', 'X', '-', '*'}
+	out := []rune{'◻', '▓', '▓', '▓', '▓', '▓', '▓', '▓', '▓', '█'}
 	return out[index]
 }
 
@@ -437,11 +437,11 @@ func initScore() []hiScoreT {
 		Name  string
 		Score int
 	}{
-		{Name: "Roy", Score: 10000},
-		{Name: "Maurice", Score: 7500},
-		{Name: "Jen", Score: 5000},
-		{Name: "Douglas", Score: 2500},
-		{Name: "Denholm", Score: 1000},
+		{Name: " ", Score: 20},
+		{Name: " ", Score: 10},
+		{Name: " ", Score: 5},
+		{Name: " ", Score: 2},
+		{Name: " ", Score: 0},
 	}
 	for i := range temp {
 		hs = append(hs, temp[i])
